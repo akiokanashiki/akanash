@@ -2,6 +2,7 @@
 
 //
 import ApolloClient from 'apollo-boost';
+import gql from 'graphql-tag';
 
 //
 const gqlClient = new ApolloClient();
@@ -22,12 +23,14 @@ export default {
     actions: {
         listTickets({ commit }) {
             gqlClient.query({
-                query: gql`listTickets {
-                    id
-                    title
-                    status
-                    created_by
-                    created_at
+                query: gql`query {
+                    listTickets {
+                        id
+                        title
+                        status
+                        created_by
+                        created_at
+                    }
                 }`
             })
                 .then(({ listTickets }) => commit('updateTickets', { tickets: listTickets }))

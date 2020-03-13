@@ -4,6 +4,8 @@
       <input type="submit" value="Logout" />
     </form>
     <h1>Tickets</h1>
+    <h2>New</h2>
+    <h2>List</h2>
     <table>
       <thead>
         <tr>
@@ -38,7 +40,7 @@ export default {
     ...mapActions("listTickets")
   },
   created() {
-      this.listTickets();
+    this.$store.dispatch('listTickets')
   }
 };
 </script>

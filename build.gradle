@@ -28,10 +28,16 @@ classes.dependsOn npm_run_build
 dependencies {
 	// ----- for implementation
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.session:spring-session-data-redis'
+	implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:6.0.1'
 	// ----- for development
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// ----- for testing or demo
 	implementation 'it.ozimov:embedded-redis:0.7.2'
 	developmentOnly 'io.lettuce:lettuce-core'
+	developmentOnly 'com.h2database:h2'
 }

@@ -1,6 +1,14 @@
+logging:
+  level:
+    root: INFO 
+
 spring:
   redis:
     host: localhost
     port: 6379
   session:
     store-type: redis
+
+graphql:
+  tools:
+    schema-location-pattern: schema.graphql
