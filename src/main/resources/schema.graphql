@@ -1,16 +1,16 @@
 type Ticket {
     id: ID!
-    title: String!
-    status: String!
-    created_by: String!
-    created_at: String!
+    title:String!
+    status:String!
+    created_by:String!
+    created_at:String!
 }
 
 type Query {
-    listTickets: [Ticket!]!
+    listTickets:[Ticket!]!
 }
 
 type Mutation {
-    createTicket(titile: String!): Ticket!
-    deleteTicket(id: ID!): Ticket
+    createTicket(title:String!):Ticket!
+    deleteTicket(id:ID!):Ticket
 }

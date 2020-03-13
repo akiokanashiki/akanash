@@ -5,6 +5,10 @@
     </form>
     <h1>Tickets</h1>
     <h2>New</h2>
+    <form @submit.prevent.stop="submitNewTicket">
+      <input type="text" v-model="title" />
+      <input type="submit" value="Create" />
+    </form>
     <h2>List</h2>
     <table>
       <thead>
@@ -29,18 +33,25 @@
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      tickets: []
+      title: null
     };
   },
+  computed: {
+    ...mapState(["tickets"])
+  },
   methods: {
-    ...mapActions("listTickets")
+    submitNewTicket() {
+      const title = this.title;
+      this.$store.dispatch("createTicket", { title });
+      this.title = "";
+    }
   },
   created() {
-    this.$store.dispatch('listTickets')
+    this.$store.dispatch("listTickets");
   }
 };
 </script>
