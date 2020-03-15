@@ -5,7 +5,7 @@
     </form>
     <h1>Tickets</h1>
     <h2>New</h2>
-    <form @submit.prevent.stop="submitNewTicket">
+    <form @submit.prevent.stop="createTicket">
       <input type="text" v-model="title" />
       <input type="submit" value="Create" />
     </form>
@@ -13,6 +13,7 @@
     <table>
       <thead>
         <tr>
+          <th> </th>
           <th>ID</th>
           <th>TITLE</th>
           <th>STATUS</th>
@@ -22,6 +23,9 @@
       </thead>
       <tbody>
         <tr v-for="ticket in tickets" v-bind:key="ticket.id">
+          <td>
+            <button @click.prevent.stop="deleteTicket(ticket.id)">x</button>
+          </td>
           <td>{{ticket.id}}</td>
           <td>{{ticket.title}}</td>
           <td>{{ticket.status}}</td>
@@ -44,10 +48,13 @@ export default {
     ...mapState(["tickets"])
   },
   methods: {
-    submitNewTicket() {
+    createTicket() {
       const title = this.title;
       this.$store.dispatch("createTicket", { title });
       this.title = "";
+    },
+    deleteTicket(id) {
+      this.$store.dispatch("deleteTicket", { id });
     }
   },
   created() {

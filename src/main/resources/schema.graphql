@@ -7,10 +7,5 @@ type Ticket {
 }
 
 type Query {
-    listTickets:[Ticket!]!
-}
-
-type Mutation {
-    createTicket(title:String!):Ticket!
-    deleteTicket(id:ID!):Ticket
+    tickets:[Ticket!]!
 }

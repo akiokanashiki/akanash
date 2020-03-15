@@ -20,7 +20,7 @@ public class QueryResolver implements GraphQLQueryResolver {
     @Autowired
     private ConversionService converteService;
 
-    public List<TicketType> listTickets() {
+    public List<TicketType> tickets() {
         return this.ticketRepository.findAll().stream().map(e -> this.converteService.convert(e, TicketType.class))
                 .collect(Collectors.toList());
     }
